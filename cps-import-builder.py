@@ -1473,12 +1473,6 @@ def main():
     rptr_filter_flg = args.rptr_filter
     debugflg = args.debugmode
 
-    # get today's date to stamp output files with today's iso-date.
-    if debugflg:
-        isodate = time.strftime("%Y-%m-%d_%H%M")
-    else:
-        isodate = time.strftime("%Y-%m-%d")
-
     # sanity check --cps target(s)
     for selection in args.cps_target:
         # if they specify all we just generate everything we support!
@@ -1602,13 +1596,12 @@ def main():
         print("Generating import files for Anytone D868UV")
 
         # define our export file names
-        zones_output_filename = 'd868uv_zones_{}.csv'.format(isodate)
+        zones_output_filename = 'd868uv_zones.csv'
         zones_output_file = os.path.join(outputs_dir, zones_output_filename)
-        talk_groups_output_filename = 'd868uv_talk_groups_{}.csv'.format(
-            isodate)
+        talk_groups_output_filename = 'd868uv_talk_groups.csv'
         talk_groups_output_file = os.path.join(outputs_dir,
         talk_groups_output_filename)
-        channels_output_filename = 'd868uv_channels_{}.csv'.format(isodate)
+        channels_output_filename = 'd868uv_channels.csv'
         channels_output_file = os.path.join(outputs_dir,
             channels_output_filename)
 
@@ -1636,13 +1629,12 @@ def main():
         print("Generating import files for Anytone D578UV")
 
         # define our export file names
-        zones_output_filename = 'd578uv_zones_{}.csv'.format(isodate)
+        zones_output_filename = 'd578uv_zones.csv'
         zones_output_file = os.path.join(outputs_dir, zones_output_filename)
-        talk_groups_output_filename = 'd578uv_talk_groups_{}.csv'.format(
-            isodate)
+        talk_groups_output_filename = 'd578uv_talk_groups.csv'
         talk_groups_output_file = os.path.join(outputs_dir,
         talk_groups_output_filename)
-        channels_output_filename = 'd578uv_channels_{}.csv'.format(isodate)
+        channels_output_filename = 'd578uv_channels.csv'
         channels_output_file = os.path.join(outputs_dir,
             channels_output_filename)
 
@@ -1671,15 +1663,12 @@ def main():
         print("Generating import files for Anytone D878UV")
 
         # define our export file names
-        zones_output_filename = 'd878uv_zones_{}.csv'.format(isodate)
+        zones_output_filename = 'd878uv_zones.csv'
         zones_output_file = os.path.join(outputs_dir, zones_output_filename)
-        talk_groups_output_filename = 'd878uv_talk_groups_{}.csv'.format(
-            isodate)
-        talk_groups_output_file = os.path.join(outputs_dir,
-        talk_groups_output_filename)
-        channels_output_filename = 'd878uv_channels_{}.csv'.format(isodate)
-        channels_output_file = os.path.join(outputs_dir,
-            channels_output_filename)
+        talk_groups_output_filename = 'd878uv_talk_groups.csv'
+        talk_groups_output_file = os.path.join(outputs_dir, talk_groups_output_filename)
+        channels_output_filename = 'd878uv_channels.csv'
+        channels_output_file = os.path.join(outputs_dir, channels_output_filename)
 
         # Write out an Anytone 878 zones import file
         print("   Zones import file: {}".format(
@@ -1707,13 +1696,10 @@ def main():
         print("Generating import files for Connect Systems CS800D")
 
         # define our export file names
-        talk_groups_output_filename = 'cs800d_talk_groups_{}.xlsx'.format(
-            isodate)
-        talk_groups_output_file = os.path.join(outputs_dir,
-        talk_groups_output_filename)
-        channels_output_filename = 'cs800d_channels_{}.xlsx'.format(isodate)
-        channels_output_file = os.path.join(outputs_dir,
-            channels_output_filename)
+        talk_groups_output_filename = 'cs800d_talk_groups.xlsx'
+        talk_groups_output_file = os.path.join(outputs_dir,talk_groups_output_filename)
+        channels_output_filename = 'cs800d_channels.xlsx'
+        channels_output_file = os.path.join(outputs_dir,channels_output_filename)
 
         # Write out a CS800D talk groups import file
         print("   Talk group import file: {}".format(
@@ -1735,11 +1721,10 @@ def main():
         print("Generating import files for Open GD77 CPS")
 
         # define our export file names
-        talk_groups_output_filename = 'opengd77_talk_groups_{}.csv'.format(
-            isodate)
+        talk_groups_output_filename = 'opengd77_talk_groups.csv'
         talk_groups_output_file = os.path.join(outputs_dir,
         talk_groups_output_filename)
-        channels_output_filename = 'opengd77_channels_{}.csv'.format(isodate)
+        channels_output_filename = 'opengd77_channels.csv'
         channels_output_file = os.path.join(outputs_dir,
             channels_output_filename)
 
@@ -1763,11 +1748,10 @@ def main():
         print("Generating import files for Tytera MD-UV380/MD-UV390")
 
         # define our export file names
-        talk_groups_output_filename = 'uv380_talk_groups_{}.csv'.format(
-            isodate)
+        talk_groups_output_filename = 'uv380_talk_groups.csv'
         talk_groups_output_file = os.path.join(outputs_dir,
         talk_groups_output_filename)
-        channels_output_filename = 'uv380_channels_{}.csv'.format(isodate)
+        channels_output_filename = 'uv380_channels.csv'
         channels_output_file = os.path.join(outputs_dir,
             channels_output_filename)
 
