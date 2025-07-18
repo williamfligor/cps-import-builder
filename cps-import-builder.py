@@ -167,7 +167,7 @@ def anytone_write_zones_export(zones_dict, zones_order_list,
     if debug:
         print("Writing output to: ", zones_export_file)
     zones_out_df.to_csv(zones_export_file, index=False, header=True, quoting=csv.QUOTE_ALL,
-                   line_terminator='\r\n')
+                   lineterminator='\r\n')
 
     # clean up...
     del zones_out_list
@@ -206,7 +206,7 @@ def anytone_write_talk_groups_export(talk_groups_dict,
     if debug:
         print("Writing output to: ", talk_groups_export_file)
     talk_groups_out_df.to_csv(talk_groups_export_file, index=False,
-            header=True, quoting=csv.QUOTE_ALL, line_terminator='\r\n')
+            header=True, quoting=csv.QUOTE_ALL, lineterminator='\r\n')
 
     # clean up...
     del talk_groups_out_list
@@ -394,7 +394,7 @@ def anytone_write_channels_export(channels_dict, channels_export_file,
     if debug:
         print("Writing output to: ", channels_export_file)
     channels_out_df.to_csv(channels_export_file, index=False,
-        header=True, quoting=csv.QUOTE_ALL, line_terminator='\r\n')
+        header=True, quoting=csv.QUOTE_ALL, lineterminator='\r\n')
 
     return
 
@@ -776,7 +776,7 @@ def uv380_write_talk_groups_export(talk_groups_dict,talk_groups_export_file,
     if debug:
         print("Writing output to: ", talk_groups_export_file)
     talk_groups_out_df.to_csv(talk_groups_export_file, index=False,
-            header=True, quoting=csv.QUOTE_NONE, line_terminator='\r\n')
+            header=True, quoting=csv.QUOTE_NONE, lineterminator='\r\n')
 
     # clean up...
     del talk_groups_out_list
@@ -968,7 +968,7 @@ def uv380_write_channels_export(channels_dict, channels_export_file,
     if debug:
         print("Writing output to: {}".format(channels_export_file))
     channels_out_df.to_csv(channels_export_file, index=False,
-        header=True, quoting=csv.QUOTE_NONE, line_terminator='\r\n')
+        header=True, quoting=csv.QUOTE_NONE, lineterminator='\r\n')
 
     return
 
