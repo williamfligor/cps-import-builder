@@ -68,6 +68,9 @@ cdcss_list = ['D023N','D025N','D026N','D031N','D032N','D043N','D047N','D051N',
               'D734N','D743N','D754N']
 
 
+# hack to protect Private Call entries (like Brandmeister Parrot)
+private_call_list = [9990, 9998]
+
 
 def anytone_write_zones_export(zones_dict, zones_order_list,
         zones_export_file, channels_dict, model, debug=False):
@@ -1125,8 +1128,7 @@ def add_talkgroups_fm_k7abd_talkgroups_file(k7abd_tg_file, tg_by_num_dict,
     # Read in the K7ABD talk groups file...
     tg_df = pandas.read_csv(k7abd_tg_file, header=None)
 
-    # hack to protect Private Call entries (like Brandmeister Parrot)
-    private_call_list = [9990]
+
 
     # loop through the talk groups building dictionaries
     for i, row in tg_df.iterrows():
@@ -1363,6 +1365,12 @@ def add_channels_fm_k7abd_digital_repeaters_file(k7abd_digital_file_name,
                     print("WARNING:  channel {} already defined.".format(
                         ch_name))
             else:
+                tg_number = tg_by_name_dict[tg_name]
+                if tg_number in private_call_list:
+                    tg_type = 'Private Call'
+                else:
+                    tg_type = "Group Call"
+
                 # Create a new digital channel in our channels_dict
                 channels_dict.update({ch_name : {
                     'Ch Type':ch_type,
@@ -1374,9 +1382,9 @@ def add_channels_fm_k7abd_digital_repeaters_file(k7abd_digital_file_name,
                     'CTCSS Encode':"Off",
                     'Color Code':ch_color_code,
                     'Talk Group':tg_name,
-                    'TG Number':tg_by_name_dict[tg_name],
+                    'TG Number':tg_number,
                     'Time Slot':ch_slot,
-                    'Call Type':"Group Call",
+                    'Call Type':tg_type,
                     'TX Permit':"Same Color Code",
                     'RX Only':"Off"
                     }})
@@ -1435,16 +1443,16 @@ def main():
     script_name = sys.argv[0]
     parser = argparse.ArgumentParser(formatter_class =
         argparse.ArgumentDefaultsHelpFormatter)
-    parser.add_argument('--cps', action='append', required=True,
+    parser.add_argument('--cps', action='append',
         dest='cps_target',
         help='specify CPS target; multiple targets allowed, or use special target "all" to generate files for all supported targets',
-        default=[])
+        default=['878'])
     parser.add_argument('--inputdir',
         help='specify directory containing input files',
-        required=False, default='./input_data_files')
+        required=False, default='./input')
     parser.add_argument('--outputdir',
         help='specify directory for output files',
-        required=False, default='./output_files')
+        required=False, default='./output')
     parser.add_argument('--zone_order',
         help="set the zone_order flag; if set, 'MyZoneOrder.csv' must be present in the input files directory; useful for CPS targets that support zone file import/export",
         required=False, action='store_true')
